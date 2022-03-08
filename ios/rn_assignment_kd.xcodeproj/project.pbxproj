@@ -30,6 +30,8 @@
 		00E356EE1AD99517003FC87E /* rn_assignment_kdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rn_assignment_kdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* rn_assignment_kdTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rn_assignment_kdTests.m; sourceTree = "<group>"; };
+		067055EE27D7E62400C40CB2 /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
+		067055EF27D7E64400C40CB2 /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCalendarModule.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* rn_assignment_kd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rn_assignment_kd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = rn_assignment_kd/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = rn_assignment_kd/AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				067055EE27D7E62400C40CB2 /* RCTCalendarModule.h */,
+				067055EF27D7E64400C40CB2 /* RCTCalendarModule.m */,
 			);
 			name = rn_assignment_kd;
 			sourceTree = "<group>";
@@ -145,7 +149,6 @@
 				BE2D47A01E3D93FF264C8568 /* Pods-rn_assignment_kd-rn_assignment_kdTests.debug.xcconfig */,
 				276F2B83F972E41C02A7061F /* Pods-rn_assignment_kd-rn_assignment_kdTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

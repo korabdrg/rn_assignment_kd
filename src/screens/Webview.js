@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import styles from '../assets/css/MainStyleFile';
 import Header from '../components/Header';
+import {WebView} from 'react-native-webview';
 
 const Webview = props => {
   return (
@@ -11,7 +12,7 @@ const Webview = props => {
         hasBackButton
         onBackPress={() => props.navigation.goBack()}
       />
-      <Text>Webview</Text>
+      <WebView source={{uri: 'https://google.com'}} style={{marginTop: 20}} />
     </SafeAreaView>
   );
 };
