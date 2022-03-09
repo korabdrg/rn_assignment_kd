@@ -1,10 +1,9 @@
 import React from 'react';
 import {NativeModules, Button} from 'react-native';
-const {CalendarModule} = NativeModules;
 
 const NewModuleButton = () => {
   const onPress = () => {
-    CalendarModule.createCalendarEvent('testName', 'testLocation');
+    NativeModules.Device.calculate(10, 20, '+');
   };
 
   return (
