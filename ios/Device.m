@@ -1,13 +1,30 @@
 #import "Device.h"
 #import <UIKit/UIKit.h>
 #import <React/RCTLog.h>
+#include <stdlib.h>
+
 @implementation Device
 
 //export the name of the native module as 'Device' since no explicit name is mentioned
 RCT_EXPORT_MODULE();
-RCT_EXPORT_METHOD(calculate:(nonnull  NSNumber*)string withAge:(nonnull NSNumber*)age mathOp: (NSString*)mathOperator){
-  int c = ([string doubleValue] ,mathOperator, [age doubleValue]);
-  NSLog(@"%d %@", c, mathOperator);
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(calculate:(nonnull  NSNumber*)firstNumber withAge:(nonnull NSNumber*)secondNumber mathOp:(int)mathOperator                 errorCallback: (RCTResponseSenderBlock)errorCallback
+    successCallback: (RCTResponseSenderBlock)successCallback)
+{
+    double options[4] = {
+    [firstNumber doubleValue] + [secondNumber doubleValue],
+    [firstNumber doubleValue] - [secondNumber doubleValue],
+    [firstNumber doubleValue] * [secondNumber doubleValue],
+    [firstNumber doubleValue] / [secondNumber doubleValue]};
+  int result = options[mathOperator];
+
+  @try {
+     NSNumber *eventId = [NSNumber numberWithInt:result];
+     successCallback(@[eventId]);
+   }
+
+   @catch ( NSException *e ) {
+     errorCallback(@[e]);
+   }
 }
 
 @end

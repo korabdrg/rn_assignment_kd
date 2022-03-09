@@ -1,9 +1,8 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Platform, Text} from 'react-native';
 import styles from '../assets/css/MainStyleFile';
 import Header from '../components/Header';
 import {WebView} from 'react-native-webview';
-import NewModuleButton from './CalendarExample';
 
 const Webview = props => {
   return (
@@ -13,8 +12,11 @@ const Webview = props => {
         hasBackButton
         onBackPress={() => props.navigation.goBack()}
       />
-      <NewModuleButton />
-      {/* <WebView source={{uri: 'https://google.com'}} style={{marginTop: 20}} /> */}
+      {Platform.OS === 'ios' ? (
+        <WebView source={{uri: 'https://google.com'}} style={{marginTop: 20}} />
+      ) : (
+        <Text>Android</Text>
+      )}
     </SafeAreaView>
   );
 };

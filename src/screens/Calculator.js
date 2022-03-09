@@ -6,6 +6,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   SafeAreaView,
+  NativeModules,
+  Alert,
 } from 'react-native';
 import styles from '../assets/css/MainStyleFile';
 import Input from '../components/Input';
@@ -16,6 +18,7 @@ const Calculator = props => {
   const [firstInput, setFirstInput] = useState(null);
   const [secondInput, setSecondInput] = useState(null);
   const [result, setResult] = useState(null);
+  const [resultNative, setResultNative] = useState(null);
 
   const onChangeHandler = (event, order) => {
     if (order === 'first') {
@@ -27,14 +30,28 @@ const Calculator = props => {
 
   const onSubmitHandler = () => {
     Keyboard.dismiss();
+    let firstNumberInt = parseInt(firstInput);
+    let secondNumberInt = parseInt(secondInput);
     let selectedOperator = Math.floor(Math.random() * operators.length);
+    let ReactNativeResult = operators[selectedOperator].method(
+      firstNumberInt,
+      secondNumberInt,
+    );
+    NativeModules.Device.calculate(
+      firstNumberInt,
+      secondNumberInt,
+      selectedOperator,
+      () => {
+        Alert('Something went wrong');
+      },
+      event => {
+        setResultNative(`The result from the native module was: ${event}`);
+      },
+    );
     if (firstInput && secondInput) {
       setResult(
         'The result is: ' +
-          operators[selectedOperator].method(
-            parseInt(firstInput),
-            parseInt(secondInput),
-          ) +
+          ReactNativeResult +
           `\n The operator used was '${operators[selectedOperator].sign}'`,
       );
     } else {
@@ -64,11 +81,18 @@ const Calculator = props => {
             <Text style={styles.calculateText}>Calculate</Text>
           </Pressable>
           {result && <Text style={styles.resultText}>{result}</Text>}
+          {resultNative && (
+            <Text style={styles.resultText}>{resultNative}</Text>
+          )}
           <Text
             style={styles.goToWebviewText}
             onPress={() => props.navigation.navigate('Webview')}>
             Go to WebView
           </Text>
+          {/* <NewModuleButton
+            firstNumber={firstInput}
+            secondNumber={secondInput}
+          /> */}
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>
