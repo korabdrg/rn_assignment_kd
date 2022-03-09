@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   SafeAreaView,
   NativeModules,
+  Platform,
   Alert,
 } from 'react-native';
 import styles from '../assets/css/MainStyleFile';
@@ -37,22 +38,36 @@ const Calculator = props => {
       firstNumberInt,
       secondNumberInt,
     );
-    NativeModules.Device.calculate(
-      firstNumberInt,
-      secondNumberInt,
-      selectedOperator,
-      () => {
-        Alert('Something went wrong');
-      },
-      event => {
-        setResultNative(`The result from the native module was: ${event}`);
-      },
-    );
+    {
+      Platform.OS === 'ios'
+        ? NativeModules.Device.calculate(
+            firstNumberInt,
+            secondNumberInt,
+            selectedOperator,
+            () => {
+              Alert('Something went wrong');
+            },
+            event => {
+              setResultNative(
+                `The result from the native module was: ${event}`,
+              );
+            },
+          )
+        : NativeModules.Device.getDeviceName(
+            firstNumberInt,
+            secondNumberInt,
+            selectedOperator,
+            result =>
+              setResultNative(
+                `The result from the native module was: ${result}`,
+              ),
+          );
+    }
     if (firstInput && secondInput) {
       setResult(
-        'The result is: ' +
+        'The result from the RN calculations is: ' +
           ReactNativeResult +
-          `\n The operator used was '${operators[selectedOperator].sign}'`,
+          `\n \n The operator used was '${operators[selectedOperator].sign}'`,
       );
     } else {
       setResult("Inputs can't be empty");
