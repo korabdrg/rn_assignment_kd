@@ -5,7 +5,6 @@
 
 @implementation Device
 
-//export the name of the native module as 'Device' since no explicit name is mentioned
 RCT_EXPORT_MODULE();
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(calculate:(nonnull  NSNumber*)firstNumber withAge:(nonnull NSNumber*)secondNumber mathOp:(int)mathOperator                 errorCallback: (RCTResponseSenderBlock)errorCallback
     successCallback: (RCTResponseSenderBlock)successCallback)

@@ -53,7 +53,7 @@ const Calculator = props => {
               );
             },
           )
-        : NativeModules.Device.getDeviceName(
+        : NativeModules.Device.calculateOnAndroid(
             firstNumberInt,
             secondNumberInt,
             selectedOperator,

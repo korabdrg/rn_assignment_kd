@@ -17,7 +17,7 @@ public class DeviceModule extends ReactContextBaseJavaModule {
     }
     //Custom function that we are going to export to JS
     @ReactMethod
-    public double getDeviceName(double firstNumber, double secondNumber, double selectedOperator, Callback cb) {
+    public double calculateOnAndroid(double firstNumber, double secondNumber, double selectedOperator, Callback cb) {
         int[] mathOperator = new int[]{
                 (int) (firstNumber + secondNumber),
                 (int) (firstNumber - secondNumber),
