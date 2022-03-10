@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import styles from '../assets/css/MainStyleFile';
 import Input from '../components/Input';
-import operators from '../assets/constants/types';
+import {operators} from '../assets/constants/types';
 import Header from '../components/Header';
 
 const Calculator = props => {
@@ -104,10 +104,6 @@ const Calculator = props => {
             onPress={() => props.navigation.navigate('Webview')}>
             Go to WebView
           </Text>
-          {/* <NewModuleButton
-            firstNumber={firstInput}
-            secondNumber={secondInput}
-          /> */}
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>

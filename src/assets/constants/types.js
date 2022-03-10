@@ -1,4 +1,4 @@
-let operators = [
+export let operators = [
   {
     sign: '+',
     method: function (a, b) {
@@ -25,4 +25,4 @@ let operators = [
   },
 ];
 
-export default operators;
+export const url = 'https://google.com';
